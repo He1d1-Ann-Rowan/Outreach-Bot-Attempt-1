@@ -8,7 +8,7 @@ public class ReverseHarvesterSubsystem
 
     public ReverseHarvesterSubsystem()
     {
-
+        
     }
 
     public void spin(double speed)

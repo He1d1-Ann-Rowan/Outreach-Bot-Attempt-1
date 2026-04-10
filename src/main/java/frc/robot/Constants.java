@@ -11,7 +11,7 @@ public class Constants
 
         public static final boolean RIGHT_SIDE_INVERTED = true;
 
-        public static final double DRIVE_SPEED_LIMIT = 1.0;
+        public static final double DRIVE_SPEED_LIMIT = 0.5;
     }
 
     public static final class ReverseHarvesterConstants

@@ -2,11 +2,7 @@ package frc.robot.subsystems;
 
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-// import com.revrobotics.CANSparkMax;
-// import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-
-// import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.ResetMode;
 import com.revrobotics.PersistMode;
@@ -22,28 +18,25 @@ public class DriveSubsystem
 
     private final DifferentialDrive drive;
 
-    // private final MotorControllerGroup leftGroup = new MotorControllerGroup(L_F_MOTOR, L_B_MOTOR);
-    // private final MotorControllerGroup rightGroup = new MotorControllerGroup(R_F_MOTOR, R_B_MOTOR);
-
     public DriveSubsystem()
     {
         SparkMaxConfig leftFollowerConfig = new SparkMaxConfig();
-        leftFollowerConfig.follow(L_F_MOTOR);
+        leftFollowerConfig.follow(L_F_MOTOR, true);
 
         SparkMaxConfig rightFollowerConfig = new SparkMaxConfig();
-        rightFollowerConfig.follow(R_F_MOTOR);
-
+        rightFollowerConfig.follow(R_F_MOTOR, true);
 
         L_B_MOTOR.configure(leftFollowerConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         R_B_MOTOR.configure(rightFollowerConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     
-        drive = new DifferentialDrive(L_F_MOTOR, R_F_MOTOR);
-    }
 
-    //private final DifferentialDrive drive = new DifferentialDrive(L_F_MOTOR, R_F_MOTOR);
+        drive = new DifferentialDrive(L_F_MOTOR, R_F_MOTOR);
+        drive.setSafetyEnabled(false);
+    }
 
     public void drive(double forward, double turn)
     {
+        System.out.println("Yes");
         drive.arcadeDrive(forward, turn);
     }
 }

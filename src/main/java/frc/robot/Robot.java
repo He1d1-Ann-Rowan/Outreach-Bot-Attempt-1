@@ -95,16 +95,18 @@ public class Robot extends TimedRobot
   @Override
   public void teleopPeriodic() 
   {
-    double forward = -m_controller.getRightY();
-    double turn = -m_controller.getLeftX();
+    // double forward = m_controller.getRawAxis(0);
 
-    double speed = (Constants.DriveConstants.DRIVE_SPEED_LIMIT*forward);
-    double spin = (Constants.DriveConstants.DRIVE_SPEED_LIMIT*turn);
+   // double forward = -m_controller.getRightY();
+    //double turn = -m_controller.getRightX();
 
-    System.out.println("speed: " + speed);
-    System.out.println("spin: " + spin);
+    // double speed = (Constants.DriveConstants.DRIVE_SPEED_LIMIT*forward);
+   // double spin = (Constants.DriveConstants.DRIVE_SPEED_LIMIT*turn);
 
-    m_drive.drive(speed, spin);
+    // System.out.println("speed: " + speed);
+    //System.out.println("spin: " + spin);
+
+    m_drive.drive(m_controller.getRightY(), m_controller.getLeftX());
 
     if (m_controller.getLeftTriggerAxis() > 0.2)
     {
@@ -113,7 +115,7 @@ public class Robot extends TimedRobot
     }
     else if (m_controller.getRightTriggerAxis() > 0.2)
     {
-      m_reverseharvester.spin(Constants.ReverseHarvesterConstants.SCATTER_BAR_SPEED);
+      m_reverseharvester.spin(-Constants.ReverseHarvesterConstants.SCATTER_BAR_SPEED);
       System.out.println("Negative");
     }
     else
